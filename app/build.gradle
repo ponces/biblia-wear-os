@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'dev.ponces.bibliawearos'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'dev.ponces.bibliawearos'
+        minSdk 30
+        targetSdk 36
+        versionCode 1
+        versionName '1.0'
+        resConfigs 'pt'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    signingConfigs {
+        release {
+            def keystorePath = providers.environmentVariable('ANDROID_KEYSTORE_PATH').orNull
+            if (keystorePath) {
+                storeFile file(keystorePath)
+                storePassword providers.environmentVariable('ANDROID_KEYSTORE_PASSWORD').get()
+                keyAlias providers.environmentVariable('ANDROID_KEY_ALIAS').get()
+                keyPassword providers.environmentVariable('ANDROID_KEY_PASSWORD').get()
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets.main.assets.srcDir layout.buildDirectory.dir('generated/notices')
+}
+
+tasks.register('copyNotices', Copy) {
+    from rootProject.file('LICENSE')
+    from rootProject.file('THIRD_PARTY_NOTICES.md')
+    into layout.buildDirectory.dir('generated/notices')
+}
+tasks.named('preBuild').configure { dependsOn 'copyNotices' }

@@ -1,0 +1,12 @@
+{
+  "source": "https://raw.githubusercontent.com/mrk214/snapshots/f8f3ceeb66859c19e86bcb1f6d8de8c8975ba7e4/pt___por___por_pt/ARC_vid_215.json",
+  "snapshot_commit": "f8f3ceeb66859c19e86bcb1f6d8de8c8975ba7e4",
+  "translation": "Almeida Revista e Corrigida (Portugal)",
+  "version_id": 215,
+  "publisher": "Bible Society of Portugal",
+  "copyright": "Tradução de João Ferreira de Almeida, Edição Revista e Corrigida. Copyright © 2001 Sociedade Bíblica de Portugal.",
+  "sha256": "dcb803a674b05a4831da3198d3c971eded39ea28546a476152afb6905fc9ea38",
+  "books": 66,
+  "chapters": 1189,
+  "verses": 31105
+}
